@@ -21,7 +21,14 @@ interface ReposType {
 }
 
 export const Project = (): JSX.Element => {
+
+  const capstone = {repository: "https://github.com/LetMeGameProject/let-me-game", vercel: "https://letmegame.vercel.app/"}
+
   const [repositories, setRepositories] = useState<ReposType[]>([]);
+  
+
+  console.log(repositories)
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +77,7 @@ export const Project = (): JSX.Element => {
             {repository.description}
           </Text>
           <ProjectLinks>
-            <ProjectLink target="_blank" href={repository.git_url}>
+            <ProjectLink target="_blank" href={repository.html_url}>
               <FaGithub /> Github Code
             </ProjectLink>
             {repository.homepage && (
@@ -81,6 +88,27 @@ export const Project = (): JSX.Element => {
           </ProjectLinks>
         </ProjectWrapper>
       ))}
+        <ProjectWrapper>
+          <Text
+            as="h2"
+            type="heading3"
+            css={{ marginBottom: "$3" }}
+            color="grey1"
+            >
+            Let Me Game
+          </Text>
+          <Text type="body1" color="grey2">
+          A Let me Game é uma aplicação Web que permite em poucos cliques encontrar alguém para jogar junto com você os seus jogos favoritos.
+          </Text>
+            <ProjectLinks>
+              <ProjectLink target="_blank" href={capstone.repository}>
+                <FaGithub /> Github Code
+              </ProjectLink>
+              <ProjectLink target="_blank" href={capstone.vercel}>
+                <FaShare /> Aplicação
+              </ProjectLink>
+            </ProjectLinks>
+          </ProjectWrapper>
     </>
   );
 };
